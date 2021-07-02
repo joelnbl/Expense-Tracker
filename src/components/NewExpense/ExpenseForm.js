@@ -6,46 +6,54 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-
-  //Using One State Instead
   // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
   // });
 
-  const titleChangeHandler = (e) => {
-    setEnteredTitle(e.target.value);
+  const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value);
     // setUserInput({
     //   ...userInput,
-    //   enteredTitle: e.target.value,
+    //   enteredTitle: event.target.value,
     // });
-    // Updating State That Depends On The Previous State
     // setUserInput((prevState) => {
-    //   return { ...prevState, enteredTitle: e.target.value };
+    //   return { ...prevState, enteredTitle: event.target.value };
     // });
   };
 
-  const amountChangeHandler = (e) => {
-    setEnteredAmount(e.target.value);
+  const amountChangeHandler = (event) => {
+    setEnteredAmount(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // });
   };
 
-  const dateChangeHandler = (e) => {
-    setEnteredDate(e.target.value);
+  const dateChangeHandler = (event) => {
+    setEnteredDate(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value,
+    // });
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = (event) => {
+    event.preventDefault();
+
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
+
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
   };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
